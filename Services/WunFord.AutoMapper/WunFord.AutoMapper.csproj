@@ -8,4 +8,9 @@
     <PackageReference Include="AutoMapper" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\WunFord.Data.Models\WunFord.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\WunFord.Data.ViewModels\WunFord.Data.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

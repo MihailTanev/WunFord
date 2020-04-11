@@ -1,0 +1,49 @@
+﻿@model WunFord.Data.ViewModels.Ticket.AddTicketViewModel
+@using WunFord.Data.ViewModels.Status
+@using WunFord.Common
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto text-center">
+            <form asp-controller="Ticket" asp-action="Add" enctype="multipart/form-data" method="post">
+                <h1 class="title">@ViewBag.Title</h1>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TicketKey"></label>
+                    <input asp-for="TicketKey" class="form-control" />
+                    <span asp-validation-for="TicketKey" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TicketLabel"></label>
+                    <input asp-for="TicketLabel" class="form-control" />
+                    <span asp-validation-for="TicketLabel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Volume"></label>
+                    <input asp-for="Volume" class="form-control" />
+                    <span asp-validation-for="Volume" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DispatchDate"></label>
+                    <input asp-for="DispatchDate" class="form-control" />
+                    <span asp-validation-for="DispatchDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StatusId"></label>
+                    <select asp-for="StatusId" class="form-control">
+                        <option selected>Select Status</option>
+                        @foreach (var name in this.ViewData[GlobalConstants.Statuses] as IEnumerable<StatusViewModel>)
+                        {
+                            <option value="@name.Id">@name.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-outline-dark">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

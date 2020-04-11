@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WunFord.Data.ViewModels.Ticket.TicketViewModel>
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tickets</h1>
+</div>
+<div class="row pt-3">
+    <a asp-controller="Ticket" asp-action="Add" class="btn btn-outline-dark">Add Ticket</a>
+    <form asp-action="Index">
+        <div class="col">
+            <div class="input-group">
+                @*<input asp-for="SearchString" class="form-control" placeholder="Search ticket..." />*@
+                @*<div class="input-group-prepend">
+                    <button class="btn btn-sm btn-dark" type="submit"><i class="fa fa-search"></i></button>
+                </div>*@
+            </div>
+        </div>
+    </form>
+</div>
+<br />
+<div class="row">
+    <table class="table table-bordered table-hover mx-auto text-center">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Label</th>
+                <th>Dispatch Date & Time</th>
+                <th>Volume</th>
+                <th>Status</th>
+                <th>IP change</th>
+                <th>1st check</th>
+                <th>2nd check</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Ticket"
+                           asp-action="Details"
+                           asp-route-ticketId="@ticket.Id"
+                           asp-route-title="@ticket.TicketKey">
+                            @ticket.TicketKey
+                        </a>
+                    </td>
+                    <td>@ticket.TicketLabel</td>
+                    <td>@ticket.DispatchDate.ToString("dd MMM yyyy hh:mm tt")</td>
+                    <td>@ticket.Volume</td>
+                    <td>@ticket.Status</td>
+                    @if (ticket.Volume > 150000)
+                    {
+                        <td class="bg-info text-dark">Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    <td>
+                        <a asp-controller="Ticket"
+                           asp-action="Checkin"
+                           asp-route-ticketId="@ticket.Id"
+                           asp-route-title="@ticket.TicketKey">
+                            Check In
+                        </a>
+                    </td>
+                    <td></td>
+                    <td>
+                        <a asp-controller="Ticket"
+                           asp-action="Edit"
+                           asp-route-ticketId="@ticket.Id"
+                           asp-route-title="@ticket.TicketKey">
+                            Edit
+                        </a> |
+                        <a asp-controller="Ticket"
+                           asp-action="Details"
+                           asp-route-ticketId="@ticket.Id"
+                           asp-route-title="@ticket.TicketKey">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

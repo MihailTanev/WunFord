@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WunFord.Data.Models\WunFord.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
