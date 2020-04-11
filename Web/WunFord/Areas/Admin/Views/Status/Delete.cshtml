@@ -1,0 +1,25 @@
+﻿@model WunFord.Data.ViewModels.Status.StatusViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+
+<h1 class="text-center">Delete</h1>
+
+<h2 class="text-danger text-center">Are you sure you want to delete '@Model.Name'?</h2>
+
+<br />
+
+<form method="post" asp-area="Admin" asp-action="Status" asp-controller="Delete" asp-route-Id="@Model.Id">
+    <div class="form-group text-center m-3">
+        <button type="submit" class="btn btn-danger">confirm</button>
+    </div>
+</form>
+
+<br />
+
+<div class="text-center">
+    <a asp-area="Admin" asp-controller="Status" asp-action="Index">Back to all</a>
+</div>

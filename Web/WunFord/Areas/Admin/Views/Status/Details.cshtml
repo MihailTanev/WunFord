@@ -1,0 +1,24 @@
+﻿@model WunFord.Data.ViewModels.Status.StatusViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<br />
+
+<div class="text-center">
+    <h4>Status Name:</h4>
+    <h2>@Model.Name</h2>
+</div>
+
+<br />
+
+<div class="text-center">
+    <a asp-area="Admin" asp-controller="Status" asp-action="Index">Back to all</a>
+</div>
+
+

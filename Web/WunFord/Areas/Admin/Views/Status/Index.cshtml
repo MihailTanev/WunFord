@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WunFord.Data.ViewModels.Status.StatusViewModel>
+
+@{
+    ViewBag.Title = "Statuses";
+}
+
+<br />
+
+<h1 class="text-center">Statuses</h1>
+
+<br />
+
+<p class="text-center">
+    <a asp-area="Admin" asp-controller="Status" asp-action="Add" class="btn btn-outline-dark btn-lg">Add Status</a>
+</p>
+
+<br />
+<div class="container">
+<table class="table table-hover">
+    <thead>
+        <tr class="row table-primary">
+            <th class="col-md-4 text-center">
+                Status
+            </th>           
+            <th class="col-md-8 text-center">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var status in Model)
+        {
+            <tr class="row table-dark">
+                <td class="col-md-4">
+                    @status.Name
+                </td>               
+                <td class="col-md-8 text-center">
+                    <a asp-area="Admin" asp-controller="Status" asp-action="Edit" asp-route-id="@status.Id" class="btn btn-primary">Edit</a>
+                    <a asp-area="Admin" asp-controller="Status" asp-action="Details" asp-route-id="@status.Id" class="btn btn-success">Details</a>
+                    <a asp-area="Admin" asp-controller="Status" asp-action="Delete" asp-route-id="@status.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
