@@ -1,10 +1,10 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using WunFord.Data;
-using WunFord.Data.Models;
-
-namespace WunFord.Services
+﻿namespace WunFord.Services
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
+    using WunFord.Data;
+    using WunFord.Data.Models;
+
     public abstract class BaseService
     {
         protected BaseService(WunFordDbContext context, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)

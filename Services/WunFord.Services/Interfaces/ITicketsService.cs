@@ -10,11 +10,11 @@ namespace WunFord.Services.Interfaces
     {
         IEnumerable<TicketViewModel> GetAllTickets();
 
-        Ticket AddTicket(AddTicketViewModel model, string id);
+        void AddTicket(string ticketKey, string description, string ticketLabel, string userId, int volume, DateTime dispatchDate, int statusId);
 
-        TicketViewModel GetVenueById(int id);
+        TicketViewModel GetTicketById(int ticketId);
 
-        TicketViewModel UpdateVenue(TicketViewModel model);
+        TicketViewModel UpdateTicket(TicketViewModel model);
 
         void DeleteVenue(TicketViewModel model);
     }

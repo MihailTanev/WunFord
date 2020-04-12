@@ -40,8 +40,8 @@
 
             // Configure DbContext
             services.AddDbContext<WunFordDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                      options.UseLazyLoadingProxies()
+                          .UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             // Configure Identity
             services.AddIdentity<User, IdentityRole>()
@@ -69,6 +69,12 @@
             var mapperConfig = new MapperConfiguration(m => m.AddProfile(new MapperProfile()));
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            // Configure global Antiforgery
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

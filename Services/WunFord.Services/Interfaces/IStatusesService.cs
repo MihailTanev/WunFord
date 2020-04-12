@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using WunFord.Data.Models;
 using WunFord.Data.ViewModels.Status;
 
@@ -17,5 +15,6 @@ namespace WunFord.Services.Interfaces
         StatusViewModel UpdateStatus(StatusViewModel model);
 
         void DeleteStatus(StatusViewModel model);
+
     }
 }

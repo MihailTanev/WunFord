@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{473F0F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2044C849-0BA2-4705-8825-12FC25012332}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord", "Web\WunFord\WunFord.csproj", "{E23C9553-AE39-4B4D-8390-4ED77DF6A35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord", "Web\WunFord\WunFord.csproj", "{E23C9553-AE39-4B4D-8390-4ED77DF6A35A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.Data", "Data\WunFord.Data\WunFord.Data.csproj", "{A6ABD61F-8DEB-45EE-9B91-8220D4C3B1DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.Data", "Data\WunFord.Data\WunFord.Data.csproj", "{A6ABD61F-8DEB-45EE-9B91-8220D4C3B1DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.Data.Models", "Data\WunFord.Data.Models\WunFord.Data.Models.csproj", "{47D21FEF-2947-4229-95EE-0815D1929F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.Data.Models", "Data\WunFord.Data.Models\WunFord.Data.Models.csproj", "{47D21FEF-2947-4229-95EE-0815D1929F00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.Data.ViewModels", "Data\WunFord.Data.ViewModels\WunFord.Data.ViewModels.csproj", "{070C8F2D-E097-439A-ABA8-A4F731543A49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.Data.ViewModels", "Data\WunFord.Data.ViewModels\WunFord.Data.ViewModels.csproj", "{070C8F2D-E097-439A-ABA8-A4F731543A49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.AutoMapper", "Services\WunFord.AutoMapper\WunFord.AutoMapper.csproj", "{9A9B44F8-E9B1-4844-BF09-47D74E38A51E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.AutoMapper", "Services\WunFord.AutoMapper\WunFord.AutoMapper.csproj", "{9A9B44F8-E9B1-4844-BF09-47D74E38A51E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.Services", "Services\WunFord.Services\WunFord.Services.csproj", "{578BE9DC-474B-4BF8-A95C-95AA2E1267E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.Services", "Services\WunFord.Services\WunFord.Services.csproj", "{578BE9DC-474B-4BF8-A95C-95AA2E1267E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WunFord.Common", "Common\WunFord.Common\WunFord.Common.csproj", "{9829A797-16C6-4BA8-A98E-294A5FCD8B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WunFord.Common", "Common\WunFord.Common\WunFord.Common.csproj", "{9829A797-16C6-4BA8-A98E-294A5FCD8B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

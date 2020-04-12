@@ -9,6 +9,8 @@
 
         public string LastName { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
+        public virtual ICollection<Ticket> Tickets { get; set; }
+
+        public virtual ICollection<Status> Statuses { get; set; }
     }
 }

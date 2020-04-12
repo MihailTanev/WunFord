@@ -1,0 +1,38 @@
+﻿@model WunFord.Data.ViewModels.Ticket.TicketViewModel
+@{
+    ViewBag.Title = Model.TicketKey;
+    TimeSpan counter = (Model.DispatchDate - DateTime.UtcNow);
+
+}
+
+<div class="container mx-auto">
+    <div class="p-3 text-dark bg-grey text-muted">
+        <div class="col text-center pb-3">
+            <h1>@Model.TicketKey @Model.TicketLabel</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <ul class="list-unstyled">
+                <li><h4>Created By:</h4><p class="text-info">@Model.FirstName @Model.LastName</p></li>
+                @if (Model.DispatchDate > DateTime.UtcNow)
+                {
+                    <li>
+                        <h4>Dispatched Date and Time:</h4><p class="text-info">
+                            @Model.DispatchDate.ToString("dd MMM yyyy  HH : mm tt")  @*@Model.DispatchDate.ToTimeZoneTime("Pacific Standard Time").ToString("dd MMM yyyy HH : mm tt")*@  in <spam class="text-danger">@String.Format("{0} days, {1} hours, {2} minutes", counter.Days, counter.Hours, counter.Minutes)</spam>
+                        </p>
+                    </li>
+                }
+                else
+                {
+                    <li><h4>dispatched at: </h4><p class="text-info"> @Model.DispatchDate.ToString("dd MMM yyyy  HH : mm")</p></li>
+                }
+
+
+                <li><h4>Description:</h4><p class="text-info">@Model.Description</p></li>
+                <li><h4>Volume:</h4><p class="text-info">@Model.Volume</p></li>
+                <li><h4>Status:</h4><p class="text-info">@Model.Status</p></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\WunFord.Common\WunFord.Common.csproj" />
     <ProjectReference Include="..\WunFord.Data.Models\WunFord.Data.Models.csproj" />
   </ItemGroup>
 

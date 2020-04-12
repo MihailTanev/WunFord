@@ -1,8 +1,8 @@
-﻿@model WunFord.Data.ViewModels.Ticket.AddTicketViewModel
+﻿@model WunFord.Data.ViewModels.Ticket.TicketViewModel
 @using WunFord.Data.ViewModels.Status
 @using WunFord.Common
 @{
-    ViewBag.Title = "Add Ticket";
+    ViewBag.Title = Model.TicketKey;
 }
 
 <div class="row">
@@ -12,7 +12,7 @@
 </div>
 
 <div class="container">
-    <form asp-controller="Ticket" asp-action="Add" enctype="multipart/form-data" method="post">
+    <form asp-area="" asp-controller="Ticket" asp-action="Edit" enctype="multipart/form-data" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row">
             <div class="col-md-4 mx-auto text-center">
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="text-center m-4">
-            <button type="submit" class="btn btn-outline-dark">@ViewBag.Title</button>
+            <input type="submit" value="Update" class="btn btn-outline-dark " />
         </div>
     </form>
 </div>

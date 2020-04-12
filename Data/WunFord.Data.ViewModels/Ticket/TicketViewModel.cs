@@ -20,6 +20,9 @@
         public string Description { get; set; }
 
         public string CheckInOne { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public int StatusId { get; set; }
         public string Status { get; set; }

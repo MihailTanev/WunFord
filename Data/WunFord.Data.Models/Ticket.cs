@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Ticket
+    public class Ticket : IEquatable<Ticket>
     {
         public int Id { get; set; }
 
@@ -10,7 +10,7 @@
 
         public string TicketLabel { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
         public DateTime DispatchDate { get; set; }
 
@@ -26,5 +26,12 @@
 
         public string UserId { get; set; }
         public virtual User User { get; set; }
+
+        public bool Equals(Ticket other)
+        {
+            return this.Id == other.Id && this.TicketKey == other.TicketKey && this.TicketLabel==other.TicketLabel && 
+                this.CreatedDate == other.CreatedDate && this.DispatchDate==other.DispatchDate && this.Volume==other.Volume &&
+                this.Description == other.Description && this.StatusId == other.StatusId;
+        }
     }
 }
