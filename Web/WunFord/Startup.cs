@@ -15,6 +15,8 @@
     using WunFord.Services.Interfaces;
     using global::AutoMapper;
     using WunFord.AutoMapper;
+    using System.Threading;
+    using System.Globalization;
 
     public class Startup
     {
@@ -52,6 +54,7 @@
             // Configure Services
             services.AddTransient<IStatusesService, StatusesService>();
             services.AddTransient<ITicketsService, TicketsService>();
+            services.AddTransient<IUsersService, UsersService>();
 
             // Configure password requirements
             services.Configure<IdentityOptions>(options =>
@@ -75,6 +78,9 @@
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

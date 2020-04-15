@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WunFord.Data.ViewModels.Ticket.TicketViewModel>
+﻿@model IEnumerable<TicketViewModel>
+
 @{
     ViewBag.Title = "Home";
 }
@@ -6,18 +7,23 @@
 <div class="text-center">
     <h1 class="display-4">Tickets</h1>
 </div>
-<div class="row pt-3">
-    <a asp-controller="Ticket" asp-action="Add" class="btn btn-outline-dark">Add Ticket</a>
-    <form asp-action="Index">
-        <div class="col">
-            <div class="input-group">
-                @*<input asp-for="SearchString" class="form-control" placeholder="Search ticket..." />*@
-                @*<div class="input-group-prepend">
-                    <button class="btn btn-sm btn-dark" type="submit"><i class="fa fa-search"></i></button>
-                </div>*@
-            </div>
+
+<div class="container">
+    <div class="row pt-3 d-flex justify-content-between">
+        <a asp-controller="Ticket" asp-action="Add" class="btn btn-outline-dark">Add Ticket</a>
+        <div class="col-md-6">
+            <form asp-action="Index" asp-controller="Ticket" method="get">
+                <div class="col">
+                    <div class="input-group">
+                        <input name="SearchString" class="form-control" placeholder="Search ticket..." />
+                        <div class="input-group-prepend">
+                            <button class="btn btn-sm btn-dark" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 <br />
 <div class="row">
@@ -38,51 +44,77 @@
         <tbody>
             @foreach (var ticket in Model)
             {
-                <tr>
+            <tr>
+                <td>
+                    <a asp-controller="Ticket"
+                       asp-action="Details"
+                       asp-route-ticketId="@ticket.Id"
+                       asp-route-title="@ticket.TicketKey">
+                        @ticket.TicketKey
+                    </a>
+                </td>
+                <td>@ticket.TicketLabel</td>
+                <td>@ticket.DispatchDate.ToString("dd MMM yyyy, hh:mm tt")</td>
+                <td>@ticket.Volume</td>
+                <td>@ticket.Status</td>
+                @if (ticket.Volume > 150000)
+                {
+                    <td class="bg-info text-dark">Yes</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+                @if (ticket.FirstCheck == null)
+                {
                     <td>
                         <a asp-controller="Ticket"
-                           asp-action="Details"
-                           asp-route-ticketId="@ticket.Id"
-                           asp-route-title="@ticket.TicketKey">
-                            @ticket.TicketKey
-                        </a>
-                    </td>
-                    <td>@ticket.TicketLabel</td>
-                    <td>@ticket.DispatchDate.ToString("dd MMM yyyy, hh:mm tt")</td>
-                    <td>@ticket.Volume</td>
-                    <td>@ticket.Status</td>
-                    @if (ticket.Volume > 150000)
-                    {
-                        <td class="bg-info text-dark">Yes</td>
-                    }
-                    else
-                    {
-                        <td>No</td>
-                    }
-                    <td>
-                        <a asp-controller="Ticket"
-                           asp-action="Checkin"
-                           asp-route-ticketId="@ticket.Id"
+                           asp-action="FirstCheck"
+                           asp-route-Id="@ticket.Id"
                            asp-route-title="@ticket.TicketKey">
                             Check In
                         </a>
                     </td>
-                    <td></td>
+                }
+                else
+                {
+                    <td>@ticket.FirstCheck</td>
+
+                }
+
+                @if (ticket.SecondCheck == null)
+                {
                     <td>
                         <a asp-controller="Ticket"
-                           asp-action="Edit"
-                           asp-route-ticketId="@ticket.Id"
+                           asp-action="SecondCheck"
+                           asp-route-Id="@ticket.Id"
                            asp-route-title="@ticket.TicketKey">
-                            Edit
-                        </a> |
-                        <a asp-controller="Ticket"
-                           asp-action="Details"
-                           asp-route-ticketId="@ticket.Id"
-                           asp-route-title="@ticket.TicketKey">
-                            Delete
+                            Check In
                         </a>
                     </td>
-                </tr>
+                }
+                else
+                {
+                    <td>@ticket.SecondCheck</td>
+
+                }
+                <td>
+                    <a asp-area=""
+                       asp-controller="Ticket"
+                       asp-action="Edit"
+                       asp-route-Id="@ticket.Id"
+                       asp-route-title="@ticket.TicketKey">
+                        Edit
+                    </a> |
+                    <a asp-area=""
+                       asp-controller="Ticket"
+                       asp-action="Delete"
+                       asp-route-Id="@ticket.Id"
+                       asp-route-title="@ticket.TicketKey">
+                        Delete
+                    </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

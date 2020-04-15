@@ -61,3 +61,6 @@ body {
 .navbar-brand:hover {
     color: slategrey !important;
 }
+input {
+    text-align: center;
+}

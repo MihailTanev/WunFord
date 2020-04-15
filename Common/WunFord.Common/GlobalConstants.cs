@@ -6,5 +6,7 @@ namespace WunFord.Common
     {
         public const string Statuses = "Statuses";
 
+        public const string Users = "Users";
+
     }
 }

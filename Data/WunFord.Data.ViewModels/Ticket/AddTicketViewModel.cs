@@ -3,7 +3,6 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using WunFord.Common;
-    using WunFord.Data.Models;
 
     public class AddTicketViewModel
     {
@@ -24,14 +23,10 @@
 
         [Display(Name = "Status")]
         public int StatusId { get; set; }
+        
+        public string FirstCheck { get; set; }
 
-        public string CheckInOne { get; set; }
+        public string SecondCheck { get; set; }
 
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string UserId { get; set; }
-        public User User { get; set; }
     }
 }

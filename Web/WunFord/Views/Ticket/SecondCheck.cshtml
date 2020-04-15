@@ -1,0 +1,31 @@
+﻿@model TicketViewModel
+
+@{
+    ViewBag.Title = "Second check";
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Title</h1>
+</div>
+
+
+<div class="container">
+    <form asp-controller="Ticket" asp-action="SecondCheck" enctype="multipart/form-data" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-4 mx-auto text-center">
+                <div class="form-group">
+                    <input asp-for="SecondCheck" class="form-control" placeholder="Enter name..." />
+                    <span asp-validation-for="SecondCheck" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-4">
+            <button type="submit" class="btn btn-outline-dark">save</button>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using WunFord.Data.Models;
-using WunFord.Data.ViewModels.Status;
-
-namespace WunFord.Services.Interfaces
+﻿namespace WunFord.Services.Interfaces
 {
+    using System.Collections.Generic;
+    using WunFord.Data.Models;
+    using WunFord.Data.ViewModels.Status;
+
     public interface IStatusesService
     {
         IEnumerable<StatusViewModel> GetAllStatuses();

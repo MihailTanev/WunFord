@@ -1,14 +1,11 @@
-﻿@model WunFord.Data.ViewModels.Ticket.AddTicketViewModel
-@using WunFord.Data.ViewModels.Status
-@using WunFord.Common
+﻿@model AddTicketViewModel
+
 @{
     ViewBag.Title = "Add Ticket";
 }
 
-<div class="row">
-    <div class="col-md-4 mx-auto text-center">
-        <h1 class="pt-3">@ViewBag.Title</h1>
-    </div>
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Title</h1>
 </div>
 
 <div class="container">
@@ -64,5 +61,5 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

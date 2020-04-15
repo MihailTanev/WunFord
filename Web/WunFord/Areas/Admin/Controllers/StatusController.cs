@@ -42,7 +42,7 @@
 
             this.statusService.AddStatus(model);
 
-            return this.RedirectToAction("~/");
+            return this.RedirectToAction(nameof(Index));
         }
 
         [Authorize]
