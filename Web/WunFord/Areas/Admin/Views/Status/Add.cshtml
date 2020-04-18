@@ -1,34 +1,29 @@
-﻿@model WunFord.Data.ViewModels.Status.AddStatusViewModel
+﻿@model AddStatusViewModel
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Add Status";
 }
 
-<br />
-
-<h1 class="text-center">Add Status</h1>
-
-<br />
-
-<div class="row text-center">
-    <div class="col-md-4 offset-md-4">
-        <form asp-action="Add">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Add Status" class="btn btn-outline-dark" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<br />
-
 <div class="text-center">
-    <a asp-area="Admin" asp-controller="Status" asp-action="Index">Back to all</a>
+    <h1 class="display-4">@ViewBag.Title</h1>
 </div>
 
+<div class="container">
+    <form asp-action="Add">
+        <div class="row">
+            <div class="col-md-5 mx-auto text-center">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-outline-dark " />
+                </div>
+                <div class="text-center m-4">
+                    <a asp-area="Admin" asp-controller="Status" asp-action="Index">Back to all</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

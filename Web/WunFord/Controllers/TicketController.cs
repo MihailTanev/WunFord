@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;
     using WunFord.Common;
@@ -16,17 +15,15 @@
     {
         private readonly ITicketsService ticketsService;
         private readonly IStatusesService statusesService;
-        private readonly IUsersService usersService;
         private readonly UserManager<User> userManager;
-        private readonly WunFordDbContext  context;
+        private readonly IUsersService usersService;
 
-        public TicketController(WunFordDbContext context, ITicketsService ticketsService, IStatusesService statusesService, UserManager<User> userManager, IUsersService usersService)
+        public TicketController(ITicketsService ticketsService, IStatusesService statusesService, UserManager<User> userManager, IUsersService usersService)
         {
             this.ticketsService = ticketsService;
             this.statusesService = statusesService;
             this.userManager = userManager;
             this.usersService = usersService;
-            this.context = context;
         }
 
         public IActionResult Index(string searchString)
@@ -82,6 +79,7 @@
         public IActionResult FirstCheck(int Id)
         {
             var ticket = this.ticketsService.GetTicketById(Id);
+
             if (ticket == null)
             {
                 return this.RedirectToAction(nameof(Index));

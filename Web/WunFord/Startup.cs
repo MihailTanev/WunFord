@@ -15,8 +15,8 @@
     using WunFord.Services.Interfaces;
     using global::AutoMapper;
     using WunFord.AutoMapper;
-    using System.Threading;
     using System.Globalization;
+    using WunFord.Middleware.Extensions;
 
     public class Startup
     {
@@ -87,23 +87,7 @@
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                using (var context = serviceScope.ServiceProvider.GetRequiredService<WunFordDbContext>())
-                {
-                    context.Database.EnsureCreated();
-
-                    if (!context.Statuses.Any())
-                    {
-                        context.Statuses.Add(new Status { Name = "Dispatched" });
-                        context.Statuses.Add(new Status { Name = "Awaiting approval" });
-                        context.Statuses.Add(new Status { Name = "Change IP Typology" });
-                        context.Statuses.Add(new Status { Name = "IP Typology change in Progress" });
-                    }
-                    context.SaveChanges();
-                }
-            }
+        {               
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -115,6 +99,9 @@
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Middleware for adding roles in the database
+            app.UseSeedRoles();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

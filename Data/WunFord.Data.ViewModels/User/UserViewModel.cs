@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace WunFord.Data.ViewModels.User
+﻿namespace WunFord.Data.ViewModels.User
 {
-    public class UserViewModel : IEquatable<UserViewModel>
+    public class UserViewModel 
     {
         public int Id { get; set; }
 
@@ -10,9 +8,6 @@ namespace WunFord.Data.ViewModels.User
 
         public string Email { get; set; }
 
-        public bool Equals(UserViewModel other)
-        {
-            return this.Id == other.Id && this.Username == other.Username && this.Email==other.Email;
-        }
+       
     }
 }
