@@ -14,6 +14,7 @@
             this.CreateMap<Ticket, TicketViewModel>()
                 .ForMember(dvm => dvm.Status, d => d.MapFrom(x => x.Status.Name))
                 .ForMember(dvm => dvm.FirstName, d => d.MapFrom(x => x.User.FirstName))
+                //.ForMember(dvm => dvm.FirstCheck, d => d.MapFrom(x => x.User.FirstName))
                 .ForMember(dvm => dvm.LastName, d => d.MapFrom(x => x.User.LastName)).ReverseMap();
 
             this.CreateMap<Ticket, AddTicketViewModel>().ReverseMap();

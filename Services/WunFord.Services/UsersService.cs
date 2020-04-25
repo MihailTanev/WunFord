@@ -27,5 +27,16 @@
 
             return usersAdminViewModel;
         }
+
+        public UserViewModel GetUserById(string userId)
+        {
+            var user = this.Context
+                  .Users
+                  .FirstOrDefault(d => d.Id == userId);
+
+            var ticketViewModel = this.Mapper.Map<UserViewModel>(user);
+
+            return ticketViewModel;
+        }
     }
 }

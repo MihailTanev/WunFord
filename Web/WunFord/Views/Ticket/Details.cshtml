@@ -5,40 +5,40 @@
 
 }
 
-<div class="container mx-auto">
-    <div class="text-center">
-        <h1 class="display-4">@Model.TicketLabel</h1>
-    </div>
-    <div class="row">
-        <div>
-            <ul class="list-unstyled">
-                @if (Model.DispatchDate > DateTime.UtcNow)
-                {
-                    <li>
-                        <h4>Dispatched Date and Time:</h4><p class="text-info">
-                            @Model.DispatchDate.ToString("dd MMM yyyy,  HH : mm tt")  @*@Model.DispatchDate.ToTimeZoneTime("Pacific Standard Time").ToString("dd MMM yyyy HH : mm tt")*@
-                        </p>
-                    </li>
-                    <li>
-                        <h4>Time Left:</h4><p class="text-info">                           
-                            <spam class="text-danger">@String.Format("{0} days, {1} hours, {2} minutes", counter.Days, counter.Hours, counter.Minutes)</spam>
-                        </p>
-                    </li>
-                }
-                else
-                {
-                    <li><h4>dispatched at: </h4><p class="text-info"> @Model.DispatchDate.ToString("dd MMM yyyy, HH : mm tt")</p></li>
-                }
+<div class="container">
+    <h2>@Model.TicketLabel</h2>
+    <hr />
+    <dl class="row">
+        @if (Model.DispatchDate > DateTime.UtcNow)
+        {
+            <dt class="col-md-3">Dispatched Date and Time:</dt>
+            <dd class="col-md-9">@Model.DispatchDate.ToString("dd MMM yyyy,  HH : mm tt")</dd>
+            <dt class="col-md-3">Time Left:</dt>
+            <dd class="col-md-9">@String.Format("{0} days, {1} hours, {2} minutes", counter.Days, counter.Hours, counter.Minutes)</dd>
 
-
-                <li><h4>Description:</h4><p class="text-info">@Model.Description</p></li>
-                <li><h4>First Check:</h4><p class="text-info">@Model.FirstCheck</p></li>
-                <li><h4>Second Check:</h4><p class="text-info">@Model.SecondCheck</p></li>
-                <li><h4>Volume:</h4><p class="text-info">@Model.Volume</p></li>
-                <li><h4>Status:</h4><p class="text-info">@Model.Status</p></li>
-                <li><h4>Created By:</h4><p class="text-info">@Model.FirstName @Model.LastName</p></li>
-                <li><h4>Date Created:</h4><p class="text-info">@Model.CreatedDate.ToString("dd MMM yyyy, HH : mm tt")</p></li>
-            </ul>
-        </div>
-    </div>
+        }
+        else
+        {
+            <dt class="col-md-3">Dispatched at:</dt>
+            <dd class="col-md-9"> @Model.DispatchDate.ToString("dd MMM yyyy, HH : mm tt")</dd>
+        }
+        <dt class="col-md-3">Status:</dt>
+        <dd class="col-md-9">@Model.Status</dd>
+        <dt class="col-md-3">Volume:</dt>
+        <dd class="col-md-9">@Model.Volume</dd>
+        <dt class="col-md-3">Created by:</dt>
+        <dd class="col-md-9">@Model.FirstName @Model.LastName</dd>
+        <dt class="col-md-3">Date Created:</dt>
+        <dd class="col-md-9">@Model.CreatedDate.ToString("dd MMM yyyy, HH : mm tt")
+        <dt>
+        <dt class="col-md-3">First Check:</dt>
+        <dd class="col-md-9">@Model.FirstCheck</dd>
+        <dt class="col-md-3">Second check:</dt>
+        <dd class="col-md-9">@Model.SecondCheck</dd>
+        <dt class="col-md-3">Description:</dt>
+        <dd class="col-md-9">@Model.Description</dd>
+    </dl>
 </div>
+
+
+

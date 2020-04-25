@@ -111,7 +111,7 @@
             {
                 return null;
             }
-            
+
             ticket.FirstCheck = model.FirstCheck;
 
             this.Context.SaveChanges();

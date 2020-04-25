@@ -33,7 +33,8 @@
         {
             return this.Id == other.Id && this.TicketKey == other.TicketKey && this.TicketLabel == other.TicketLabel &&
                 this.CreatedDate == other.CreatedDate && this.DispatchDate == other.DispatchDate && this.Volume == other.Volume &&
-                this.Description == other.Description && this.StatusId == other.StatusId && this.FirstCheck== other.FirstCheck && this.SecondCheck==other.SecondCheck;
+                this.Description == other.Description && this.StatusId == other.StatusId &&
+                this.FirstCheck == other.FirstCheck && this.SecondCheck == other.SecondCheck;
         }
     }
 }

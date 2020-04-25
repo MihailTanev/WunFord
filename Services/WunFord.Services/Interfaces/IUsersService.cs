@@ -7,5 +7,7 @@
     {
         IEnumerable<UserViewModel> GetAllUsers();
 
+        UserViewModel GetUserById(string userId);
+
     }
 }

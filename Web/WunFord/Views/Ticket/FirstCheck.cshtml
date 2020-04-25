@@ -12,13 +12,15 @@
     <form asp-controller="Ticket" asp-action="FirstCheck" enctype="multipart/form-data" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row">
-            <div class="col-md-4 mx-auto text-center">
+            <div class="col-md-4 mx-auto text-center">              
                 <div class="form-group">
-                    <input asp-for="FirstCheck" class="form-control" placeholder="Enter name..." />
-                    <span asp-validation-for="FirstCheck" class="text-danger"></span>
+                    <label asp-for="FirstCheck"></label>
+                    <select asp-for="FirstCheck" asp-items="@Model.Specialists" class="form-control">
+                        <option value="0">-- Select User --</option>
+                    </select>
                 </div>
             </div>
-        </div>
+        </div>      
         <div class="text-center m-4">
             <button type="submit" class="btn btn-outline-dark">save</button>
         </div>

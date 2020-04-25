@@ -3,8 +3,11 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using WunFord.Common;
     using WunFord.Data;
     using WunFord.Data.Models;
@@ -75,23 +78,38 @@
             return this.View(ticket);
         }
 
-        [Authorize]
-        public IActionResult FirstCheck(int Id)
+        private async Task<IEnumerable<SelectListItem>> GetAllSpecialists()
         {
-            var ticket = this.ticketsService.GetTicketById(Id);
+            var usersInTeacherRole = await this.userManager.GetUsersInRoleAsync(RoleConstants.SPECIALIST_ROLE);
 
-            if (ticket == null)
+            var teachers = usersInTeacherRole.Select(specialist => new SelectListItem
             {
-                return this.RedirectToAction(nameof(Index));
-            }
+                Text = specialist.FirstName + " " + specialist.LastName,
+                Value = specialist.FirstName + " " + specialist.LastName
+            })
+                .ToList();
 
-            return this.View(ticket);
+            return teachers;
         }
+
+        [Authorize]
+        public async Task<IActionResult> FirstCheck()
+        {
+            var specialists = await this.GetAllSpecialists();
+
+            var model = new TicketViewModel
+            {
+                Specialists = specialists
+            };
+
+            return this.View(model);
+        }
+        
 
         [Authorize]
         [HttpPost]
         public IActionResult FirstCheck(TicketViewModel model)
-        {          
+        {         
 
             if (!this.ModelState.IsValid)
             {
@@ -108,15 +126,16 @@
         }
 
         [Authorize]
-        public IActionResult SecondCheck(int Id)
+        public async Task<IActionResult> SecondCheck()
         {
-            var ticket = this.ticketsService.GetTicketById(Id);
-            if (ticket == null)
-            {
-                return this.RedirectToAction(nameof(Index));
-            }
+            var specialists = await this.GetAllSpecialists();
 
-            return this.View(ticket);
+            var model = new TicketViewModel
+            {
+                Specialists = specialists
+            };
+
+            return this.View(model);
         }
 
         [Authorize]
