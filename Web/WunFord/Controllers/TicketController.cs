@@ -45,7 +45,7 @@
         public IActionResult Add()
         {
             this.ViewData[GlobalConstants.Statuses] = this.statusesService.GetAllStatuses();
-            //this.ViewData[GlobalConstants.Users] = this.usersService.GetAllUsers();
+
             return this.View();
         }
 

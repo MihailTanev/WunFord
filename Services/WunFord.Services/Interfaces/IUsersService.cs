@@ -1,13 +1,14 @@
 ﻿namespace WunFord.Services.Interfaces
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using WunFord.Data.ViewModels.User;
 
     public interface IUsersService
     {
         IEnumerable<UserViewModel> GetAllUsers();
 
-        UserViewModel GetUserById(string userId);
+        Task<UserViewModel> GetUserById(string userId);
 
     }
 }

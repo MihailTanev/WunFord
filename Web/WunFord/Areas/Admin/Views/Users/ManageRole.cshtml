@@ -1,0 +1,58 @@
+﻿@model RoleViewModel
+
+@{
+    ViewData["Title"] = Model.Username;
+}
+
+<div class="col text-center">
+    <h1 class="pt-3">@ViewData["Title"]</h1>
+    <div class="title-underline"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model.Roles)
+                {
+                    <tr>
+                        <td>@role</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<form method="post" asp-action="DeleteRole" asp-controller="Users">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Delete Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Username</td>
+                <td>
+                    <div class="d-flex justify-content-between">
+                        <input type="hidden" name="UserId" value="@Model.Id" />
+                        <select class="form-control text-primary text-center"
+                                style="padding:0rem 2rem!important" name="Role" asp-items="Model.RoleList"></select>
+                    </div>
+                    <div class="d-flex justify-content-center p-3">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+

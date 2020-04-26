@@ -15,5 +15,16 @@
         public const string EMAIL = "Email";
         public const string PASSWORD = "Password";
 
+
+        public const int MIN_USERNAME_LENGTH = 3;
+        public const int MAX_USERNAME_LENGTH = 15;
+
+        public const int MIN_BIRTHDATE_YEAR = 1900;
+        public const int MAX_BIRTHDATE_YEAR = 2019;
+
+        public const string REGEX_USERNAME = "[a-zA-z0-9-.*/_]+";
+
+        public const string USERNAME_LENGHT_ERROR_MESSAGE = "The {0} must be at least {1} characters long!";
+
     }
 }

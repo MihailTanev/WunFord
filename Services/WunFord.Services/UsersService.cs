@@ -2,8 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using AutoMapper;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using WunFord.Data;
     using WunFord.Data.Models;
     using WunFord.Data.ViewModels.User;
@@ -28,11 +30,11 @@
             return usersAdminViewModel;
         }
 
-        public UserViewModel GetUserById(string userId)
+        public async Task<UserViewModel> GetUserById(string userId)
         {
-            var user = this.Context
+            var user = await this.Context
                   .Users
-                  .FirstOrDefault(d => d.Id == userId);
+                  .FirstOrDefaultAsync(d => d.Id == userId);
 
             var ticketViewModel = this.Mapper.Map<UserViewModel>(user);
 

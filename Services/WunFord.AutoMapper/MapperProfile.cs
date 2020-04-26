@@ -21,10 +21,13 @@
 
             this.CreateMap<Status, AddStatusViewModel>().ReverseMap();
 
-            this.CreateMap<User, UserViewModel>()
-                .ForMember(uvm => uvm.Id, u => u.MapFrom(x => x.Id))
-                .ForMember(uvm => uvm.Username, u => u.MapFrom(x => x.UserName))
-                .ReverseMap();
+            this.CreateMap<User, UserViewModel>().ReverseMap();
+            this.CreateMap<User, ChangeUserRoleViewModel>().ReverseMap();
+            this.CreateMap<User, RoleViewModel>().ReverseMap();
+            this.CreateMap<User, ChangePasswordViewModel>().ReverseMap();
+            this.CreateMap<User, DeleteUserViewModel>().ReverseMap();
+            this.CreateMap<User, EditUserViewModel>().ReverseMap();
+            this.CreateMap<User, UserRoleViewModel>().ReverseMap();
 
         }
     }

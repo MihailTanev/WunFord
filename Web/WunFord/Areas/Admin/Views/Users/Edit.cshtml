@@ -1,0 +1,92 @@
+﻿@model EditUserViewModel
+
+@{
+    ViewBag.Title = Model.Username;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Title</h1>
+</div>
+
+
+@*<div class="container">
+        <form enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4 mx-auto text-center">
+                    <div class="form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center m-4">
+                <input type="submit" value="Update" class="btn btn-outline-dark " />
+            </div>
+        </form>
+    </div>
+
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }*@
+
+<form method="post" enctype="multipart/form-data" class="mx-auto p-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row text-center">
+        <div class="col-md-4 offset-md-2 form-group">
+            <label asp-for="FirstName" class="control-label"></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+            </div>
+        </div>
+        <div class="col-md-4 form-group">
+            <label asp-for="LastName" class="control-label"></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row text-center">
+        <div class="col-md-4 offset-md-2 form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+      
+    </div>
+
+    <br />
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">save</button>
+    </div>
+</form>
+<hr class="mb-2" />
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
